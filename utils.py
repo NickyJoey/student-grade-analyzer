@@ -66,12 +66,15 @@ def tier_position_ratio(score: float, tier: str, ranges: Dict[str, Tuple[float, 
     s = min(max(score, lo), hi)
     return (s - lo) / (hi - lo)
 
+import json
+
 def compute_estimate(
     N: int,
     score: float,
     tiers: List[str],
     ranges: Dict[str, Tuple[float, float]],
     counts: Dict[str, int],
+    json_mode: bool = False,
 ) -> None:
     tier = score_to_tier(score, ranges, tiers)
     if tier == "Unknown":
@@ -85,7 +88,7 @@ def compute_estimate(
         higher_count += counts.get(t, 0)
 
     tier_count = counts.get(tier, 0)
-    pos = tier_position_ratio(score, tier, ranges)  # 0..1 inside tier
+    pos = tier_position_ratio(score, tier, ranges)
     ahead_in_tier = (1.0 - pos) * tier_count
 
     estimated_ahead = higher_count + ahead_in_tier
@@ -99,11 +102,22 @@ def compute_estimate(
     top_percent = (estimated_rank / N) * 100.0
     percentile = 100.0 - top_percent
 
+    if json_mode:
+        result = {
+            "tier": tier,
+            "rank": estimated_rank,
+            "class_size": N,
+            "top_percent": round(top_percent, 1),
+            "percentile": round(percentile, 1),
+        }
+        print(json.dumps(result, indent=4))
+        return
+
     print("\n===== ESTIMATE =====")
     print(f"Estimated tier: {tier}")
     print(f"Estimated rank: ~{estimated_rank} / {N}")
     print(f"Estimated position: Top {top_percent:.1f}%  (higher is better -> ~{percentile:.1f}th percentile)")
     print("\nBreakdown:")
     print(f"  People in higher tiers: {higher_count}")
-    print(f"  People ahead within {tier}: ~{ahead_in_tier:.1f} (based on your score within the tier range)")
+    print(f"  People ahead within {tier}: ~{ahead_in_tier:.1f}")
     print("====================\n")
