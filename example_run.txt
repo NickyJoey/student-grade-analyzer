@@ -1,0 +1,27 @@
+Example run:
+
+Default grade tiers (from highest to lowest):
+A+, A, A-, B+, B, B-, C+, C, C-, D, F
+
+Do you want to edit score ranges? (y/n): n
+Class size (N): 85
+
+Count in A+: 4
+Count in A: 7
+Count in A-: 10
+Count in B+: 14
+Count in B: 20
+Count in B-: 12
+Count in C+: 8
+Count in C: 6
+Count in C-: 2
+Count in D: 1
+Count in F: 1
+
+Your estimated score (0–100): 86
+
+===== ESTIMATE =====
+Estimated tier: A-
+Estimated rank: ~12 / 85
+Estimated position: Top 14.1%
+====================
