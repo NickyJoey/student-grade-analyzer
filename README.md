@@ -7,6 +7,7 @@ A Python-based command-line tool that estimates a student's percentile rank and 
 - Customizable grade tiers (A+, A, A-, etc.)
 - Editable score ranges for each tier
 - Validates class size and tier counts
+- Codebase is organized into main.py (CLI flow) and utils.py (helper logic).
 - Estimates:
   - Letter grade
   - Approximate rank
