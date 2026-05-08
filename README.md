@@ -130,5 +130,3 @@ Yucheng Qiao
 University of Alberta — Computer Science Student
 
 GitHub: https://github.com/NickyJoey
-
----
