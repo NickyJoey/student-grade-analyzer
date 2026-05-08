@@ -46,6 +46,7 @@ student-grade-analyzer/
 ├── README.md
 ├── requirements.txt
 └── example_run.txt
+```
 Installation
 
 Clone the repository:
