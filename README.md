@@ -1,25 +1,26 @@
+````md
 # Class Percentile & Letter-Grade Estimator
 
 A Python-based command-line tool that estimates a student's percentile rank and expected letter grade using customizable class grade distributions.
 
 This project allows users to define grade tiers, score ranges, and student counts for each tier in order to estimate:
 
-* Expected letter grade
-* Approximate class rank
-* Top percentage placement
-* Percentile standing
+- Expected letter grade
+- Approximate class rank
+- Top percentage placement
+- Percentile standing
 
 ---
 
 ## Features
 
-* Customizable grade tiers (A+, A, A-, B+, etc.)
-* Editable score ranges for each grade tier
-* Input validation for score ranges and class counts
-* Percentile and rank estimation
-* JSON output support
-* Organized modular code structure
-* Simple command-line interface
+- Customizable grade tiers (A+, A, A-, B+, etc.)
+- Editable score ranges for each grade tier
+- Input validation for score ranges and class counts
+- Percentile and rank estimation
+- JSON output support
+- Organized modular code structure
+- Simple command-line interface
 
 ---
 
@@ -46,7 +47,7 @@ student-grade-analyzer/
 ├── README.md
 ├── requirements.txt
 └── example_run.txt
-```
+````
 
 ---
 
@@ -130,3 +131,6 @@ Yucheng Qiao
 University of Alberta — Computer Science Student
 
 GitHub: https://github.com/NickyJoey
+
+```
+```
