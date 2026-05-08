@@ -1,4 +1,6 @@
 from typing import Dict, List, Tuple
+import json
+
 
 def ask_int(prompt: str, min_val: int = None, max_val: int = None) -> int:
     while True:
@@ -15,6 +17,7 @@ def ask_int(prompt: str, min_val: int = None, max_val: int = None) -> int:
         except ValueError:
             print("  -> Please enter an integer. Try again.")
 
+
 def ask_float(prompt: str, min_val: float = None, max_val: float = None) -> float:
     while True:
         s = input(prompt).strip()
@@ -30,6 +33,7 @@ def ask_float(prompt: str, min_val: float = None, max_val: float = None) -> floa
         except ValueError:
             print("  -> Please enter a number. Try again.")
 
+
 def ask_yes_no(prompt: str) -> bool:
     while True:
         s = input(prompt + " (y/n): ").strip().lower()
@@ -39,10 +43,12 @@ def ask_yes_no(prompt: str) -> bool:
             return False
         print("  -> Please type y or n.")
 
+
 def pretty_ranges(ranges: Dict[str, Tuple[float, float]], tiers: List[str]) -> None:
     for t in tiers:
         lo, hi = ranges[t]
         print(f"  {t:>2}: {lo:g}–{hi:g}")
+
 
 def validate_ranges(ranges: Dict[str, Tuple[float, float]], tiers: List[str]) -> bool:
     for t in tiers:
@@ -52,6 +58,7 @@ def validate_ranges(ranges: Dict[str, Tuple[float, float]], tiers: List[str]) ->
             return False
     return True
 
+
 def score_to_tier(score: float, ranges: Dict[str, Tuple[float, float]], tiers: List[str]) -> str:
     for t in tiers:
         lo, hi = ranges[t]
@@ -59,14 +66,15 @@ def score_to_tier(score: float, ranges: Dict[str, Tuple[float, float]], tiers: L
             return t
     return "Unknown"
 
+
 def tier_position_ratio(score: float, tier: str, ranges: Dict[str, Tuple[float, float]]) -> float:
     lo, hi = ranges[tier]
     if hi == lo:
         return 0.5
+
     s = min(max(score, lo), hi)
     return (s - lo) / (hi - lo)
 
-import json
 
 def compute_estimate(
     N: int,
@@ -77,6 +85,7 @@ def compute_estimate(
     json_mode: bool = False,
 ) -> None:
     tier = score_to_tier(score, ranges, tiers)
+
     if tier == "Unknown":
         print("\nCould not map your score to any tier based on current ranges.")
         return
@@ -109,6 +118,8 @@ def compute_estimate(
             "class_size": N,
             "top_percent": round(top_percent, 1),
             "percentile": round(percentile, 1),
+            "higher_tier_count": higher_count,
+            "estimated_ahead_in_tier": round(ahead_in_tier, 1),
         }
         print(json.dumps(result, indent=4))
         return
@@ -116,7 +127,8 @@ def compute_estimate(
     print("\n===== ESTIMATE =====")
     print(f"Estimated tier: {tier}")
     print(f"Estimated rank: ~{estimated_rank} / {N}")
-    print(f"Estimated position: Top {top_percent:.1f}%  (higher is better -> ~{percentile:.1f}th percentile)")
+    print(f"Approximate percentile: {percentile:.1f}th")
+    print(f"Estimated position: Top {top_percent:.1f}%")
     print("\nBreakdown:")
     print(f"  People in higher tiers: {higher_count}")
     print(f"  People ahead within {tier}: ~{ahead_in_tier:.1f}")
