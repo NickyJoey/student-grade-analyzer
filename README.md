@@ -1,4 +1,3 @@
-````md
 # Class Percentile & Letter-Grade Estimator
 
 A Python-based command-line tool that estimates a student's percentile rank and expected letter grade using customizable class grade distributions.
@@ -47,30 +46,17 @@ student-grade-analyzer/
 ├── README.md
 ├── requirements.txt
 └── example_run.txt
-````
-
----
-
-## Installation
+Installation
 
 Clone the repository:
 
-```bash
 git clone https://github.com/NickyJoey/student-grade-analyzer.git
 cd student-grade-analyzer
-```
 
 Run the program:
 
-```bash
 python main.py
-```
-
----
-
-## Example Usage
-
-```text
+Example Usage
 Default grade tiers (from highest to lowest):
 A+, A, A-, B+, B, B-, C+, C, C-, D, F
 
@@ -89,48 +75,32 @@ Count in D: 1
 Count in F: 1
 
 Your estimated score (0-100): 86
-```
 
 Output:
 
-```text
 ===== ESTIMATE =====
 Estimated tier: A-
 Estimated rank: ~12 / 85
 Approximate percentile: 85.9th
 Estimated position: Top 14.1%
 ====================
-```
-
----
-
-## Technologies Used
-
-* Python 3
-* Standard Python libraries
-* Command-line interface (CLI)
-
----
-
-## Future Improvements
+Technologies Used
+Python 3
+Standard Python libraries
+Command-line interface (CLI)
+Future Improvements
 
 Planned features for future versions include:
 
-* CSV file import support
-* GPA calculation support
-* Data visualization and graphs
-* GUI or web-based interface
-* Enhanced statistical analysis
-* Exporting results to JSON or CSV
-
----
-
-## Author
+CSV file import support
+GPA calculation support
+Data visualization and graphs
+GUI or web-based interface
+Enhanced statistical analysis
+Exporting results to JSON or CSV
+Author
 
 Yucheng Qiao
 University of Alberta — Computer Science Student
 
 GitHub: https://github.com/NickyJoey
-
-```
-```
