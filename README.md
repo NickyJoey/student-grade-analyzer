@@ -51,13 +51,16 @@ Installation
 
 Clone the repository:
 
+```bash
 git clone https://github.com/NickyJoey/student-grade-analyzer.git
 cd student-grade-analyzer
-
+```
 Run the program:
-
+```bash
 python main.py
+```
 Example Usage
+```text
 Default grade tiers (from highest to lowest):
 A+, A, A-, B+, B, B-, C+, C, C-, D, F
 
@@ -76,15 +79,16 @@ Count in D: 1
 Count in F: 1
 
 Your estimated score (0-100): 86
-
+```
 Output:
-
+```text
 ===== ESTIMATE =====
 Estimated tier: A-
 Estimated rank: ~12 / 85
 Approximate percentile: 85.9th
 Estimated position: Top 14.1%
 ====================
+```
 Technologies Used
 Python 3
 Standard Python libraries
